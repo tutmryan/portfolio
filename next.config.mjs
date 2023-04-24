@@ -22,6 +22,12 @@ export default {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: '*.imagekit.io',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
-};
+}

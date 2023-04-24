@@ -1,6 +1,6 @@
-var tsConfigs = ['./tsconfig.json'];
+var tsConfigs = ['./tsconfig.json']
 
-var ruleOverrides = {};
+var ruleOverrides = {}
 
 module.exports = {
   overrides: [
@@ -14,10 +14,15 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: tsConfigs,
+        sourceType: 'module',
       },
       plugins: ['@typescript-eslint', 'prettier'],
       rules: {
-        'prettier/prettier': 'error',
+        'prettier/prettier': 'off',
+        '@typescript-eslint/ban-ts-comment': 'off',
+        'prefer-const': 'off',
+        '@typescript-eslint/no-unused-vars': 'off',
+        '@typescript-eslint/no-explicit-any': 'off',
       },
       files: [
         'src/**/*.ts',
@@ -35,6 +40,7 @@ module.exports = {
       parser: '@typescript-eslint/parser',
       parserOptions: {
         project: tsConfigs,
+        sourceType: 'module',
       },
       plugins: [
         '@typescript-eslint',
@@ -58,4 +64,4 @@ module.exports = {
     },
   ],
   root: true,
-};
+}

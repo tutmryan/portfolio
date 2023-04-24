@@ -18,7 +18,8 @@
     "tsc": "tsc",
     "commit": "cz",
     "prepare": "husky install",
-    "postbuild": "next-sitemap --config next-sitemap.config.cjs"
+    "postbuild": "next-sitemap --config next-sitemap.config.cjs",
+    "generate:types:windows": "supabase gen types typescript --project-id dzwaatgnffbeeimnnuxx --schema public > src/lib/database.types.ts"
   },
   "dependencies": {
     "@commitlint/config-conventional": "^17.6.1",
@@ -27,7 +28,9 @@
     "@supabase/auth-helpers-nextjs": "^0.6.1",
     "@supabase/auth-helpers-react": "^0.3.1",
     "@supabase/supabase-js": "^2.21.0",
+    "@tailwindcss/typography": "^0.5.9",
     "@tanstack/react-query": "^4.29.3",
+    "clsx": "^1.2.1",
     "next": "^13.3.1",
     "next-seo": "^6.0.0",
     "next-sitemap": "^4.0.7",
