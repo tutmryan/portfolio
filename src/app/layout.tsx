@@ -4,6 +4,7 @@ import './globals.css';
 // Components
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
+import { Analytics } from '@vercel/analytics/react'
 
 // Hooks
 
@@ -33,6 +34,7 @@ export default async function RootLayout({
             <Footer />
           </div>
         </ClientLayout>
+        <Analytics />
       </body>
     </html>
   )
