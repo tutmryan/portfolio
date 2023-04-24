@@ -35,31 +35,12 @@ export interface Database {
           title?: string | null
         }
       }
-      items: {
-        Row: {
-          created_at: string
-          description: string
-          id: string
-          name: string
-        }
-        Insert: {
-          created_at?: string
-          description: string
-          id?: string
-          name: string
-        }
-        Update: {
-          created_at?: string
-          description?: string
-          id?: string
-          name?: string
-        }
-      }
       profile: {
         Row: {
           avatar: string | null
           connects: Json[]
           created_at: string | null
+          cv_url: string | null
           first_name: string | null
           highlight_images: Json[]
           id: number
@@ -70,6 +51,7 @@ export interface Database {
           avatar?: string | null
           connects?: Json[]
           created_at?: string | null
+          cv_url?: string | null
           first_name?: string | null
           highlight_images?: Json[]
           id?: number
@@ -80,6 +62,7 @@ export interface Database {
           avatar?: string | null
           connects?: Json[]
           created_at?: string | null
+          cv_url?: string | null
           first_name?: string | null
           highlight_images?: Json[]
           id?: number
