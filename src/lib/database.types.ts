@@ -35,10 +35,42 @@ export interface Database {
           title?: string | null
         }
       }
+      company: {
+        Row: {
+          company: string | null
+          created_at: string | null
+          end: Json | null
+          id: number
+          logo: string | null
+          profile_id: number
+          start: Json | null
+          title: string | null
+        }
+        Insert: {
+          company?: string | null
+          created_at?: string | null
+          end?: Json | null
+          id?: number
+          logo?: string | null
+          profile_id: number
+          start?: Json | null
+          title?: string | null
+        }
+        Update: {
+          company?: string | null
+          created_at?: string | null
+          end?: Json | null
+          id?: number
+          logo?: string | null
+          profile_id?: number
+          start?: Json | null
+          title?: string | null
+        }
+      }
       profile: {
         Row: {
           avatar: string | null
-          connects: Json[]
+      company: Json[]
           created_at: string | null
           cv_url: string | null
           first_name: string | null
@@ -70,36 +102,36 @@ export interface Database {
           last_name?: string | null
         }
       }
-      work_history: {
+      projects: {
         Row: {
-          company: string | null
+          company_id: number
           created_at: string | null
-          end: Json | null
+          description: string | null
           id: number
+          link: Json | null
           logo: string | null
+          name: string | null
           profile_id: number
-          start: Json | null
-          title: string | null
         }
         Insert: {
-          company?: string | null
+          company_id: number
           created_at?: string | null
-          end?: Json | null
+          description?: string | null
           id?: number
+          link?: Json | null
           logo?: string | null
+          name?: string | null
           profile_id: number
-          start?: Json | null
-          title?: string | null
         }
         Update: {
-          company?: string | null
+          company_id?: number
           created_at?: string | null
-          end?: Json | null
+          description?: string | null
           id?: number
+          link?: Json | null
           logo?: string | null
+          name?: string | null
           profile_id?: number
-          start?: Json | null
-          title?: string | null
         }
       }
     }

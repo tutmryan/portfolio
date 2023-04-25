@@ -4,9 +4,9 @@ import { AppSupabaseClient, Table } from '@/types'
 
 export const useWorkHistory = () => {
   // Get profile
-  const useGetProfile = (initialData?: Array<Table<'work_history'>>) => {
-    return useQuery<Array<Table<'work_history'>>>(
-      ['work_history'],
+  const useGetProfile = (initialData?: Array<Table<'company'>>) => {
+    return useQuery<Array<Table<'company'>>>(
+      ['company'],
       async () => {
         return getAllWorkHistory(supabaseClient)
       },
@@ -18,10 +18,10 @@ export const useWorkHistory = () => {
 
   // Get profile by Id
   const useGetWorkHistoryByProfileId = (
-    initialData?: Array<Table<'work_history'>>
+    initialData?: Array<Table<'company'>>
   ) => {
-    return useQuery<Array<Table<'work_history'>>>(
-      ['work_history'],
+    return useQuery<Array<Table<'company'>>>(
+      ['company'],
       async () => {
         return getWorkHistoryByProfileId(supabaseClient)
       },
@@ -40,8 +40,8 @@ export const useWorkHistory = () => {
 // Supabase
 export const getAllWorkHistory = async (
   supabase: AppSupabaseClient = supabaseClient
-): Promise<Array<Table<'work_history'>>> => {
-  const { data, error } = await supabase.from('work_history').select('*')
+): Promise<Array<Table<'company'>>> => {
+  const { data, error } = await supabase.from('company').select('*')
 
   if (error) {
     console.log('error getAllWorkHistory: ', error)
@@ -53,10 +53,10 @@ export const getAllWorkHistory = async (
 
 export const getWorkHistoryByProfileId = async (
   supabase: AppSupabaseClient = supabaseClient
-): Promise<Array<Table<'work_history'>>> => {
+): Promise<Array<Table<'company'>>> => {
   const profileId = 1
   const { data, error } = await supabase
-    .from('work_history')
+    .from('company')
     .select('*')
     .eq('profile_id', profileId)
 
