@@ -69,8 +69,9 @@ export interface Database {
       }
       profile: {
         Row: {
+          about_introduction: Json | null
           avatar: string | null
-      company: Json[]
+          connects: Json[]
           created_at: string | null
           cv_url: string | null
           first_name: string | null
@@ -80,6 +81,7 @@ export interface Database {
           last_name: string | null
         }
         Insert: {
+          about_introduction?: Json | null
           avatar?: string | null
           connects?: Json[]
           created_at?: string | null
@@ -91,6 +93,7 @@ export interface Database {
           last_name?: string | null
         }
         Update: {
+          about_introduction?: Json | null
           avatar?: string | null
           connects?: Json[]
           created_at?: string | null
@@ -112,6 +115,8 @@ export interface Database {
           logo: string | null
           name: string | null
           profile_id: number
+          responsibilities: string[] | null
+          techs: string[] | null
         }
         Insert: {
           company_id: number
@@ -122,6 +127,8 @@ export interface Database {
           logo?: string | null
           name?: string | null
           profile_id: number
+          responsibilities?: string[] | null
+          techs?: string[] | null
         }
         Update: {
           company_id?: number
@@ -132,6 +139,8 @@ export interface Database {
           logo?: string | null
           name?: string | null
           profile_id?: number
+          responsibilities?: string[] | null
+          techs?: string[] | null
         }
       }
     }

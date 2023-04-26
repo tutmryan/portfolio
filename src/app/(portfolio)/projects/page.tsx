@@ -6,6 +6,7 @@ import { Card } from '@/components/Card'
 import { SimpleLayout } from '@/components/SimpleLayout'
 import createSupabaseServer from '@/utils/supabase-server'
 import { getProjectsByProfileId } from '@/services/useProjects'
+import { getProfileById } from '@/services/useProfile'
 
 const logoAnimaginary = '/logos/animaginary.svg'
 const logoCosmos = '/logos/cosmos.svg'
@@ -65,6 +66,9 @@ function LinkIcon(props) {
 export default async function Projects() {
   const supabase = createSupabaseServer();
   const projects = await getProjectsByProfileId(supabase);
+  const data = await getProfileById(supabase);
+
+  const profile = data?.[0] || undefined
 
   return (
     <>
@@ -76,8 +80,8 @@ export default async function Projects() {
         />
       </Head>
       <SimpleLayout
-        title="Things I’ve made trying to put my dent in the universe."
-        intro="I’ve worked on tons of little projects over the years but these are the ones that I’m most proud of. Many of them are open-source, so if you see something that piques your interest, check out the code and contribute if you have ideas for how it can be improved."
+        title={profile?.about_introduction?.title || ''}
+        intro={profile?.about_introduction?.description || ''}
       >
         <ul
           role="list"
@@ -85,13 +89,13 @@ export default async function Projects() {
         >
           {projects.map((project) => (
             <Card as="li" key={project.name}>
-              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+              <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 overflow-hidden">
                 <Image
                   src={project.logo}
                   alt=""
-                  className="h-8 w-8"
-                  width={32}
-                  height={32}
+                  className="h-12 w-12 rounded-full"
+                  width={48}
+                  height={48}
                   unoptimized
                 />
               </div>
