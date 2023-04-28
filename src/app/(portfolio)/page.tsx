@@ -13,6 +13,7 @@ import createSupabaseServer from '@/utils/supabase-server';
 import { toast } from 'react-hot-toast';
 import SocialLink from '@/components/SocialLink'
 import { getWorkHistoryByProfileId } from '@/services/useWorkHistory'
+import { getAllHighlightedProjects } from '@/services/useProjects'
 
 const logoAirbnb = '/logos/airbnb.svg'
 const logoFacebook = '/logos/facebook.svg'
@@ -83,17 +84,17 @@ function ArrowDownIcon(props) {
   )
 }
 
-function Article({ article }) {
+function HighlightedProject({ highlightedProject }) {
   return (
-    <Card as="article" className=''>
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
+    <Card as="project" className=''>
+      <Card.Title href={`/projects/${highlightedProject.id}`}>
+        {highlightedProject.name}
       </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
+      <Card.Eyebrow as="time" dateTime={highlightedProject.date} decorate>
+        {formatDate(highlightedProject.created_at)}
       </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Description>{highlightedProject.description}</Card.Description>
+      <Card.Cta>Read more</Card.Cta>
     </Card>
   )
 }
@@ -228,10 +229,12 @@ async function Photos() {
 export default async function Home() {
   const supabase = createSupabaseServer();
   const data = await getProfileById(supabase);
+  const getHighlightedProjects = await getAllHighlightedProjects(supabase);
 
   const profile = data?.[0] || undefined
-  const articles = []
+  const highlightedProjects = getHighlightedProjects || []
 
+  console.log('getHighlightedProjects: ', getHighlightedProjects)
   return (
     <>
       {/* <Head>
@@ -269,12 +272,12 @@ export default async function Home() {
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
           <div className="flex flex-col gap-16">
-            {articles?.map((article) => (
-              <Article key={article.slug} article={article} />
+            {highlightedProjects?.map((project) => (
+              <HighlightedProject key={project.id} highlightedProject={project} />
             ))}
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <Newsletter />
+            {/* <Newsletter /> */}
             <Resume />
           </div>
         </div>
