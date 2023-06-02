@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -97,7 +99,7 @@ export default async function About() {
                   }
 
                   return (
-                    <SocialLink href={link.url} icon={icon} className='mt-4'>
+                    <SocialLink key={link.name} href={link.url} icon={icon} className='mt-4'>
                       {link.name}
                     </SocialLink>
                   )
@@ -106,6 +108,7 @@ export default async function About() {
                 if (link.type === 'mail') {
                   return (
                     <SocialLink
+                      key={link.name}
                       href={link.url}
                       icon={MailIcon}
                       className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
