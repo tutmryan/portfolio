@@ -16,6 +16,7 @@ export interface Database {
           id: number
           image: string | null
           profile_id: number | null
+          social_contacts: Json[] | null
           title: string | null
         }
         Insert: {
@@ -24,6 +25,7 @@ export interface Database {
           id?: number
           image?: string | null
           profile_id?: number | null
+          social_contacts?: Json[] | null
           title?: string | null
         }
         Update: {
@@ -32,6 +34,7 @@ export interface Database {
           id?: number
           image?: string | null
           profile_id?: number | null
+          social_contacts?: Json[] | null
           title?: string | null
         }
       }
@@ -111,6 +114,7 @@ export interface Database {
           created_at: string | null
           description: string | null
           id: number
+          is_highlighted: boolean
           link: Json | null
           logo: string | null
           name: string | null
@@ -123,6 +127,7 @@ export interface Database {
           created_at?: string | null
           description?: string | null
           id?: number
+          is_highlighted?: boolean
           link?: Json | null
           logo?: string | null
           name?: string | null
@@ -135,6 +140,7 @@ export interface Database {
           created_at?: string | null
           description?: string | null
           id?: number
+          is_highlighted?: boolean
           link?: Json | null
           logo?: string | null
           name?: string | null
