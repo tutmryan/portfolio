@@ -88,14 +88,14 @@ function ArrowDownIcon(props) {
 function HighlightedProject({ highlightedProject }) {
   return (
     <Card as="project" className=''>
-      <Card.Title href={`/projects/${highlightedProject.id}`}>
+      <Card.Title href={highlightedProject.link.href}>
         {highlightedProject.name}
       </Card.Title>
-      <Card.Eyebrow as="time" dateTime={highlightedProject.date} decorate>
+      {/* <Card.Eyebrow as="time" dateTime={highlightedProject.date} decorate>
         {formatDate(highlightedProject.created_at)}
-      </Card.Eyebrow>
+      </Card.Eyebrow> */}
       <Card.Description>{highlightedProject.description}</Card.Description>
-      <Card.Cta>Read more</Card.Cta>
+      <Card.Cta>Visit</Card.Cta>
     </Card>
   )
 }
