@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query'
 import supabaseClient from '@/utils/supabase-browser'
 import { AppSupabaseClient, Table } from '@/types'
 
