@@ -14,6 +14,7 @@ import { toast } from 'react-hot-toast';
 import SocialLink from '@/components/SocialLink'
 import { getWorkHistoryByProfileId } from '@/services/useWorkHistory'
 import { getAllHighlightedProjects } from '@/services/useProjects'
+import Head from 'next/head'
 
 const logoAirbnb = '/logos/airbnb.svg'
 const logoFacebook = '/logos/facebook.svg'
@@ -234,18 +235,17 @@ export default async function Home() {
   const profile = data?.[0] || undefined
   const highlightedProjects = getHighlightedProjects || []
 
-  console.log('getHighlightedProjects: ', getHighlightedProjects)
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>
-          Spencer Sharp - Software designer, founder, and amateur astronaut
+          {profile.introduction.title}
         </title>
         <meta
           name="description"
-          content="I’m Spencer, a software designer and entrepreneur based in New York City. I’m the founder and CEO of Planetaria, where we develop technologies that empower regular people to explore space on their own terms."
+          content={profile.introduction.description}
         />
-      </Head> */}
+      </Head>
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
